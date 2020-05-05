@@ -1,0 +1,19 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "mytimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 0 16 * * *"
+    },
+    {
+      "type": "sendGrid",
+      "direction": "out",
+      "name": "sendgrid",
+      "apiKey": "AzureWebJobsSendGridApiKey",
+      "to": "benedikt.haeuser@outlook.com",
+      "from": "report@bhaeuse_webpage.com"
+    }
+  ]
+}

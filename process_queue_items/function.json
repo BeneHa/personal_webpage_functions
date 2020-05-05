@@ -1,0 +1,27 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "indexpageinformationqueue",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "type": "table",
+      "direction": "out",
+      "name": "processedRequests",
+      "tableName": "processedRequests",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "type": "sendGrid",
+      "direction": "out",
+      "name": "outMail",
+      "apiKey": "AzureWebJobsSendGridApiKey",
+      "from": "report@bhaeuse_priavte_webpage.com",
+      "to": "benedikt.haeuser@outlook.com"
+    }
+  ]
+}
