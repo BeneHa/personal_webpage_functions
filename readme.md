@@ -1,11 +1,9 @@
-# TimerTrigger - Python
+# Processing webpage visits
 
-The `TimerTrigger` makes it incredibly easy to have your functions executed on a schedule. This sample demonstrates a simple use case of calling your function every 5 minutes.
+This project consists of three Azure functions used for tracking visitors to my [webpage](https://github.com/BeneHa/personal_webpage) (not because this is the obvious way but because I wanted to try out Azure Functions).
 
-## How it works
+The first one, http_trigger_page_visit, exposes a HTTP endpoint and gets sent all tracking information that Django extracts. It writes this information to an Azure storage queue for processing.
 
-For a `TimerTrigger` to work, you provide a schedule in the form of a [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression)(See the link for full details). A cron expression is a string with 6 separate expressions which represent a given schedule via patterns. The pattern we use to represent every 5 minutes is `0 */5 * * * *`. This, in plain text, means: "When seconds is equal to 0, minutes is divisible by 5, for any hour, day of the month, month, day of the week, or year".
+The second one, process_queue_items, watches the queue, takes new queue entries and enriches their data (calling the IPStack API to get location data belonging to the IP on a city level). It then writes the entry to an Azure BLOB table.
 
-## Learn more
-
-<TODO> Documentation
+The third one, regular-storage_report, sends me a daily mail informing me about the visitors on my page in the last 24 hours.
