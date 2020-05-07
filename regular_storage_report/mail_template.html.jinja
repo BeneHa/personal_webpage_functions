@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<h2>Your website visitors today</h2>
+
+<table cellspacing=”0” cellpadding=”0” align=”center” border=”1”>
+    <tr>
+        <td>Country</td>
+        <td>Region</td>
+        <td>City</td>
+        <td>IP address</td>
+        <td>Device</td>
+        <td>OS</td>
+        <td>Browser</td>
+        <td>Visited page</td>
+    </tr>
+    {% for item in visitor_list %}
+        <tr>
+            <td>{{ item.country_name }}</td>
+            <td>{{ item.region_name }}</td>
+            <td>{{ item.city }}</td>
+            <td>{{ item.ip_address }}</td>
+            <td>{{ item.device }}</td>
+            <td>{{ item.os }}</td>
+            <td>{{ item.browser }}</td>
+            <td>{{ item.page_name }}</td>
+        </tr>
+
+    {% endfor %}
+
+
+</table>
